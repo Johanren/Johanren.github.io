@@ -1,51 +1,41 @@
 .container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100vw; /* 100% del ancho de la ventana del navegador */
-    height: 100vh; /* 100% de la altura de la ventana del navegador */
-    perspective: 1000px;
-  }
-  
-  .book {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 1s ease; /* transición suave */
-  }
-  
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* Mantén el aspect ratio */
+  perspective: 1000px;
+}
+
+.book {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s ease; /* transición suave */
+}
+
+.page {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 1s ease; /* transición suave */
+}
+
+.page img {
+  width: 100%; /* La imagen se ajusta al ancho del contenedor */
+  height: 100%; /* La imagen se ajusta a la altura del contenedor */
+}
+
+.page:first-child {
+  left: 0;
+}
+
+.page:last-child {
+  right: 0;
+}
+
+@media only screen and (max-width: 768px) {
   .page {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    backface-visibility: hidden;
-    transition: transform 1s ease; /* transición suave */
+      width: 100%; /* En pantallas pequeñas, las páginas ocupan todo el ancho */
   }
-  
-  .page img {
-    width: 100%; /* La imagen se ajusta al ancho del contenedor */
-    height: 100%; /* La imagen se ajusta a la altura del contenedor */
-  }
-  
-  .page:first-child {
-    left: 0;
-  }
-  
-  .page:last-child {
-    left: 50%;
-  }
-  
-  /*.container:hover .book {
-    transform: rotateY(-180deg); 
-  }
-  
-  .container:hover .page:first-child {
-    transform: rotateY(180deg); 
-  }
-  
-  .container:hover .page:last-child {
-    transform: rotateY(0deg); 
-  }*/
-  
+}
