@@ -131,3 +131,4 @@ Math.easeInOutQuad = function (t, b, c, d) {
 document.querySelector('.scroll-top').onclick = function () {
 	scrollTo(document.documentElement); 
 }
+
